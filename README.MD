@@ -31,8 +31,7 @@ Edit [configuration.tfvars](configuration.tfvars) to define your Azure resources
  
 <img width='800' src='./images/AzureLZVPNNoWAN.png'/> 
 
-If you want to connect to Prism Element or Prism Central through Internet, there is an option to enable an [Azure Bastion](https://learn.microsoft.com/en-us/azure/bastion/bastion-overview) instance and a Windows Server 2022 Virtual Machine Jumbox. You can also deploy as an option a virtual machine in the Hub Virtual Network and another in the "on premise" Virtual Network for testing network connectivity.
-
+If you want to connect to Prism Element or Prism Central through Internet, there is an option to enable an [Azure Bastion](https://learn.microsoft.com/en-us/azure/bastion/bastion-overview) instance and a Windows Server 2025 Virtual Machine Jumbox. 
 
 1. Terraform Init phase  
 
