@@ -7,6 +7,7 @@ resource "azurerm_virtual_network" "TF_HubVNet" {
   location            = var.Location
   resource_group_name = azurerm_resource_group.TF_RG.name
   address_space       = ["172.16.0.0/16"]
+  # address_space     = var.HubVNetCIDR
 
     tags = {
         environment = "Hub"
@@ -23,6 +24,8 @@ resource "azurerm_subnet" "TF_HubSubnet" {
   resource_group_name  = azurerm_resource_group.TF_RG.name
   virtual_network_name = azurerm_virtual_network.TF_HubVNet.name
   address_prefixes     = ["172.16.0.0/24"]
+  # address_prefixes     = var.HubSubnetCIDR
+
 }
 
 
@@ -34,6 +37,7 @@ resource "azurerm_subnet" "TF_HubVPNGWSubnet" {
   resource_group_name  = azurerm_resource_group.TF_RG.name
   virtual_network_name = azurerm_virtual_network.TF_HubVNet.name
   address_prefixes     = ["172.16.250.0/27"]
+  # address_prefixes     = var.HubVPNGWSubnetCIDR
 }
 
 
@@ -87,6 +91,7 @@ resource "azurerm_local_network_gateway" "TF_HubLocalGW" {
   resource_group_name = azurerm_resource_group.TF_RG.name
   gateway_address     = var.PublicIPRemoteVPNGateway # This is the public IP of your on-premises VPN device
   address_space       = ["10.0.0.0/16"]
+  # adress_space = var.OnPremisesDataCenterCIDRs
 }
 
 
@@ -231,43 +236,5 @@ resource "azurerm_virtual_network_peering" "TF_Peering_Hub2FGW" {
     create = "60m"
   }
 }
-
-
-
-
-
-
-# ## Route table pour les spokes
-# # cf. https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/route_table
-# # pour connaitre la route vers on premises
-# # pas de propagation des routes via BGP (car passerelle Active/Passive)
-
-# ## Route tables etroutes vers on prem depuis Spoke VNet
-
-# # Route table for FGW VNet
-# # cf. https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/route_table
-# resource "azurerm_route_table" "TF_FGW_RouteTable" {
-#   name                = "FGW-RouteTable"
-#   location            = var.Location
-#   resource_group_name = azurerm_resource_group.TF_RG.name 
-#   # bgp_route_propagation_enabled = true
-#   tags = {
-#     environment = "FGW"
-#   }
-# }
-
-# # Route to on-premises network
-# # cf. https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/route
-# # This route is used to direct traffic from the FGW VNet to the on-premises
-# # network through the VPN gateway.
-# # The address_prefix should match the on-premises network address space.
-# # In this example, we assume the on-premises network is 10.0.0.0/16
-# resource "azurerm_route" "TF_FGW_RouteToOnPrem" {
-#   name                   = "RouteToOnPrem"
-#   resource_group_name    = azurerm_resource_group.TF_RG.name
-#   route_table_name       = azurerm_route_table.TF_FGW_RouteTable.name
-#   address_prefix         = "10.0.0.0/16" # Replace with your on-premises network address space
-#   next_hop_type         = "VirtualNetworkGateway"
-# }
 
 

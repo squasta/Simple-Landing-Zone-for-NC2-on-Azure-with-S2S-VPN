@@ -277,3 +277,63 @@ variable "PublicIPRemoteVPNGateway" {
   type = string
   description = "Public IP of the remote VPN Gateway (on-premises)"
 }
+
+# On premises DATA Center CIDRs
+variable "OnPremisesDataCenterCIDRs" {
+  type = list(string)
+  description = "CIDRs for On-Premises Data Center"
+  default = ["10.0.0.0/16"]
+}
+
+# Hub VNet CIDR
+variable "HubVNetCIDR" {
+  type = list(string)
+  description = "CIDR for Hub VNet"
+  default = ["172.16.0.0/16"]
+}
+
+# Hub  Subnet CIDR
+variable "HubSubnetCIDR" {
+  type = list(string)
+  description = "CIDR for Hub Subnet"
+  default = ["172.16.0.0/24"]
+}
+
+# Hub VNet CIDR for VPN Gateway
+variable "HubVPNGWSubnetCIDR" {
+  type = list(string)
+  description = "CIDR for Hub VNet Gateway Subnet"
+  default = ["172.16.250.0/27"]
+}
+
+
+
+# MST with NC2 on Azure needs a specific VNet and Subnet configuration
+# cf. Official Nutanix Documentation
+# https://portal.nutanix.com/page/documents/details?targetId=Disaster-Recovery-DRaaS-Guide-vpc_7_3:ecd-dr-mst-azure-create-an-mst-vnet-t.html
+
+variable "MSTVNetName" {
+  type        = string
+  description = "Name of the MST VNet"
+  default     = "MST-VNet"
+}
+
+variable "NATGwMSTName" {
+  type        = string
+  description = "Name of the NAT Gateway for MST VNet"
+  default     = "MST-NAT-Gateway"
+}
+
+variable "PublicIPMSTName" {
+  type        = string
+  description = "Name of the Public IP for NAT Gateway in MST VNet"
+  default     = "MST-NAT-Gateway-PublicIP" 
+}
+
+variable "MSTStorageAccountName" {
+  type        = string
+  description = "Name of the Storage Account for MST"
+  default     = "mststorageaccountstan"  
+}
+
+

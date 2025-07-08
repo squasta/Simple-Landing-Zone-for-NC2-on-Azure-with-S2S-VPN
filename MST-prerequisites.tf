@@ -1,34 +1,4 @@
 
-# MST with NC2 on Azure needs a specific VNet and Subnet configuration
-# cf. Official Nutanix Documentation
-# https://portal.nutanix.com/page/documents/details?targetId=Disaster-Recovery-DRaaS-Guide-vpc_7_3:ecd-dr-mst-azure-create-an-mst-vnet-t.html
-
-variable "MSTVNetName" {
-  type        = string
-  description = "Name of the MST VNet"
-  default     = "MST-VNet"
-}
-
-variable "NATGwMSTName" {
-  type        = string
-  description = "Name of the NAT Gateway for MST VNet"
-  default     = "MST-NAT-Gateway"
-}
-
-variable "PublicIPMSTName" {
-  type        = string
-  description = "Name of the Public IP for NAT Gateway in MST VNet"
-  default     = "MST-NAT-Gateway-PublicIP" 
-}
-
-variable "MSTStorageAccountName" {
-  type        = string
-  description = "Name of the Storage Account for MST"
-  default     = "mststorageaccountstan"  
-}
-
-
-
 
 # A VNet named MST-VNet
 # cf. https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network
