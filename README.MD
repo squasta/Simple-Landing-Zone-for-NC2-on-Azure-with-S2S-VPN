@@ -27,7 +27,9 @@ You can also clone this repo in your [Azure Cloud Shell](https://shell.azure.com
 
 ## Step by step operations
 
-Edit [configuration.tfvars](configuration.tfvars) to define your Azure resources names, your networks CIDRs, VPN tunnel Sharekeys...
+Edit [example-configuration.tfvars](example-configuration.tfvars) to define your Azure resources names, your networks CIDRs, VPN tunnel Sharekeys...
+
+Rename example-configuration.tfvars to configuration.tfvars
 
  
 <img width='800' src='./images/AzureLZVPNNoWAN.png'/> 
@@ -59,7 +61,7 @@ Important :exclamation: : If the deployment finishes with an error on peering, j
 
 After the Landing Zone deployment is successfull, you can test connectivity with on-premises or other Azure VNet using "on prem"VM and "on Hub VM".
 
-5. Go to Nutanix [NC2 Portal](https://cloud.nutanix.com) https://cloud.nutanix.com and start your Nutanix Cluster deployment wizard. In steps 4 (Network), 5 (Prism Central) and 6 (Flow Networking) select the Virtuals Networks and Subnets created in step 3 using terraform
+5. Go to Nutanix [NC2 Portal](https://cloud.nutanix.com) https://cloud.nutanix.com and start your Nutanix Cluster deployment wizard. In steps 4 (Network), 5 (Prism Central) and 6 (Flow Networking) select Azure VPN, the Virtuals Networks and Subnets created in step 3 using Terraform
 
 <img width='800' src='./images/Step4.png'/> 
 
@@ -70,11 +72,11 @@ After the Landing Zone deployment is successfull, you can test connectivity with
 6. If you enabled AzureBastion and Jumpbox VM, you can login to the Jumbox VM and connect Prism Element or Prism Central through a web browser. 
 
 Notes : 
- - If you don't need Azure Bastion or Jumbox 24/7. You can simply enable (create) or disable (delete) these resources in [configuration.tfvars](configuration.tfvars) file (EnableJumboxVM and EnableAzureBastion | 0= disabled , 1=enabled)
+ - If you don't need Azure Bastion or Jumbox 24/7. You can simply enable (create) or disable (delete) these resources in [example-configuration.tfvars](example-configuration.tfvars) file (EnableJumboxVM and EnableAzureBastion | 0= disabled , 1=enabled)
 
 
-7. Use the solution and configure Nutanix features like VPC, categories...
-   - Create and configure your Nutanix VPC (all configurations steps are [here](https://squasta.github.io/configurationvpcazure.html))
+7. Use the solution and configure Nutanix features like Flow VPC, categories...
+   - Create and configure your Nutanix Flow VPC (all configurations steps are [here](https://squasta.github.io/configurationvpcazure.html))
    - Deploy User VM on Nutanix Cluster
    - Test connectivity of UVM. (cf. https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Cloud-Clusters-Azure:nc2-clusters-azure-network-connectivity-uvm-c.html)
 
