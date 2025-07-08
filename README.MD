@@ -6,7 +6,7 @@ This repo contains Terraform files to deploy all Azure network components needed
 
 This is for the scenario with an interconnexion with a VPN site to Site ([Azure VPN Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways)) and [Hub and Spoke topology without vWAN](https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/hub-spoke?tabs=cli)
 
-This code include a Hub VNet with an Azure VPN Gateway. You need an on-premise / other cloud VPN device to complete the configuration and establish IPsec tunnel,s
+This code include a Hub VNet with an Azure VPN Gateway. You need an on-premise / other cloud VPN device to complete the configuration and establish IPsec tunnels
 
 <img width='400' src='./images/PlaneLZ.png'/> 
 
@@ -14,7 +14,8 @@ This code include a Hub VNet with an Azure VPN Gateway. You need an on-premise /
 ## Prerequisites
 
 - All prerequisites for NC2 : https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Cloud-Clusters-Azure:nc2-clusters-azure-getting-ready-for-deployment-c.html
-- For AOS > 6.7 (on AOS 6.7 or higher, Flow Gateways are deployed in a dedicated Flow Gateway VNet)
+- For AOS > 6.7 (on AOS 6.7 or higher, Flow Gateways are deployed in a dedicated Flow Gateway VNet).
+- If you want to test Multicloud Snapshot Terchonology with Azure Blob Storage, choose AOS >= 7.3
 
 
 - An Azure Subscription with enough privileges (create RG, Azure networking...)
@@ -26,7 +27,7 @@ You can also clone this repo in your [Azure Cloud Shell](https://shell.azure.com
 
 ## Step by step operations
 
-Edit [configuration.tfvars](configuration.tfvars) to define your Azure resources names, your networks CIDRs, Sharekeys...
+Edit [configuration.tfvars](configuration.tfvars) to define your Azure resources names, your networks CIDRs, VPN tunnel Sharekeys...
 
  
 <img width='800' src='./images/AzureLZVPNNoWAN.png'/> 
