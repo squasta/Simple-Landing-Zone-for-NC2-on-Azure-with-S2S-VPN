@@ -128,10 +128,6 @@ resource "azurerm_virtual_network_gateway_connection" "TF_HubOnPremConn" {
 
 
 
-
-
-
-
 # Peering between Cluster VNet and hub Vnet
 # cf. https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_peering
 resource "azurerm_virtual_network_peering" "TF_Peering_Cluster2Hub" {
