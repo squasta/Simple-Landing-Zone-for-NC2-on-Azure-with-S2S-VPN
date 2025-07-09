@@ -68,3 +68,6 @@ OnPremisesDataCenterCIDRs=["10.0.0.0/16"] # Replace with all IP ranges that will
 # For Multicloud Snapshot Technology DR with Azure Blob Storage (AOS 7.3 and more)
 #
 MSTStorageAccountName="mststorageaccount"   # this name must be unique
+MSTVNetCIDR=["192.168.14.0/27"]
+MSTSubnetCIDR=["192.168.14.0/28"]
+MSTDummySubnetCIDR=["192.168.14.16/28"]
