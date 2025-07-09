@@ -336,4 +336,20 @@ variable "MSTStorageAccountName" {
   default     = "mststorageaccountstan"  
 }
 
+variable "MSTVNetCIDR" {
+  description = "CIDR block for the MST VNet"
+  type = list(string)
+  default     = ["192.168.14.0/27"]  # Default CIDR block for the MST VNet
+}
 
+variable "MSTSubnetCIDR" {
+  description = "CIDR block for the MST Subnet"
+  type = list(string)
+  default     = ["192.168.14.0/28"]  # Default CIDR block for the MST Subnet
+}
+
+variable "MSTDummySubnetCIDR" {
+  description = "CIDR block for the Dummy Subnet in MST VNet"
+  type = list(string)
+  default     = ["192.168.14.16/28"]  # Default CIDR block for the Dummy Subnet in MST VNet
+}

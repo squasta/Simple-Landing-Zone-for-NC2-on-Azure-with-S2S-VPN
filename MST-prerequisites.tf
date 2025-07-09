@@ -1,5 +1,7 @@
 
 
+
+
 # A VNet named MST-VNet
 # cf. https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network
 
@@ -7,7 +9,7 @@ resource "azurerm_virtual_network" "TF_MSTVNet" {
   name                = var.MSTVNetName
   location            = var.Location
   resource_group_name = azurerm_resource_group.TF_RG.name
-  address_space       = ["192.168.14.0/27"]
+  address_space       = var.MSTVNetCIDR
 
     tags = {
         environment = "For MST"
@@ -24,7 +26,7 @@ resource "azurerm_subnet" "TF_MSTSubnet" {
   name                 = "MSTSubnet"
   resource_group_name  = azurerm_resource_group.TF_RG.name
   virtual_network_name = azurerm_virtual_network.TF_MSTVNet.name
-  address_prefixes     = ["192.168.14.0/28"]
+  address_prefixes     = var.MSTSubnetCIDR
 
 delegation {
     name = "delegation"
@@ -46,7 +48,7 @@ resource "azurerm_subnet" "TF_DummySubnet" {
   name                 = "DummySubnet"
   resource_group_name  = azurerm_resource_group.TF_RG.name
   virtual_network_name = azurerm_virtual_network.TF_MSTVNet.name
-  address_prefixes     = ["192.168.14.16/28"]
+  address_prefixes     = var.MSTDummySubnetCIDR
 }
 
 
