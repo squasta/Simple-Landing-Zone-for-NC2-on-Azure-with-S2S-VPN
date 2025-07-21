@@ -128,7 +128,7 @@ resource "azurerm_virtual_network_gateway_connection" "TF_HubOnPremConn" {
 
 
 
-# Peering between Cluster VNet and hub Vnet
+# Peering between Cluster VNet and Hub Vnet
 # cf. https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_peering
 resource "azurerm_virtual_network_peering" "TF_Peering_Cluster2Hub" {
   name                      = "Peer-ClusterVNet-to-HubVNet"
@@ -138,7 +138,7 @@ resource "azurerm_virtual_network_peering" "TF_Peering_Cluster2Hub" {
   allow_virtual_network_access = true
   use_remote_gateways = true
   # `allow_gateway_transit` must be set to false for vnet Global Peering
-  depends_on = [ azurerm_virtual_network.TF_HubVNet, azurerm_virtual_network.TF_Cluster_VNet ]
+  depends_on = [ azurerm_virtual_network.TF_HubVNet, azurerm_virtual_network.TF_Cluster_VNet, azurerm_virtual_network_gateway.TF_HubVPNGW ]
   timeouts {
     create = "60m"
   }

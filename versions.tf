@@ -25,6 +25,11 @@ terraform {
       version = "= 3.91"
     }
 
+    time = {
+      source = "hashicorp/time"
+      version = "0.13.1"
+    }
+
   }
 }
 
@@ -37,4 +42,9 @@ provider "azurerm" {
       prevent_deletion_if_contains_resources = false
     }
   }
+}
+
+# Time provider
+provider "time" {
+  # Configuration options
 }
