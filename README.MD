@@ -8,6 +8,8 @@ This is for the scenario with an interconnexion with a VPN site to Site ([Azure 
 
 This code include a Hub VNet with an Azure VPN Gateway. You need an on-premise / other cloud VPN device to complete the configuration and establish IPsec tunnels
 
+This code includes the network pre requisites to use Multicloud Snapshot Technology with Azure Blob Storage
+
 <img width='400' src='./images/PlaneLZ.png'/> 
 
 
@@ -15,7 +17,7 @@ This code include a Hub VNet with an Azure VPN Gateway. You need an on-premise /
 
 - All prerequisites for NC2 : https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Cloud-Clusters-Azure:nc2-clusters-azure-getting-ready-for-deployment-c.html
 - For AOS > 6.7 (on AOS 6.7 or higher, Flow Gateways are deployed in a dedicated Flow Gateway VNet).
-- If you want to test Multicloud Snapshot Terchonology with Azure Blob Storage, choose AOS >= 7.3
+- If you want to test Multicloud Snapshot Techolology with Azure Blob Storage, choose AOS >= 7.3
 
 
 - An Azure Subscription with enough privileges (create RG, Azure networking...)
